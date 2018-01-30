@@ -6,6 +6,8 @@ title:  Popmotion
 
 ## 1. transformers
 
+[transformers](https://popmotion.io/api/transformers/) 是一些高阶工具函数，与其它部分没有耦合，很容易看懂。
+
 这个 `pipe` 函数，写得很漂亮
 
 ~~~javascript
