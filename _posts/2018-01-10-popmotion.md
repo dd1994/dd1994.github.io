@@ -4,7 +4,7 @@ title:  Popmotion
 ---
 
 
-## 1. transformers
+## Transformers
 
 [transformers](https://popmotion.io/api/transformers/) 是一些高阶工具函数，与其它部分没有耦合，很容易看懂。
 
@@ -17,3 +17,11 @@ export const pipe = (...transformers: Function[]) => transformers.reduce(combine
 ~~~
 
 发现一个小错误：<https://github.com/Popmotion/popmotion/pull/254>
+
+## Calculators
+
+[Calculators](https://popmotion.io/api/calc/) 大部分是一些距离和角度的计算，没啥好看的
+
+## Easing
+
+[Easing](https://popmotion.io/api/easing/) 都是一些贝塞尔曲线，没啥好看的
