@@ -3,7 +3,7 @@ layout: post
 title:  "构建可扩展的数据可视化系统的一种思路"
 ---
 
-这里的数据可视化系统是指类似于 [Tableau](https://www.tableau.com/) 和 [Metabase](https://metabase.com/) 这种可以让用户通过简单拖拽生成图表的系统。这类系统要在易用性和功能上维持一种微妙的平衡：既要用起来简单，又要功能强大；既要对小白友好，又要让专业人士满意。这篇文章不会讨论交互问题，主要提供一种构建这类系统的思路。
+这里的数据可视化系统是指类似于 [Tableau](https://www.tableau.com/) 和 [Metabase](https://github.com/metabase/metabase) 这种可以让用户通过简单拖拽生成图表的系统。这类系统要在易用性和功能上维持一种微妙的平衡：既要用起来简单，又要功能强大；既要对小白友好，又要让专业人士满意。这篇文章不会讨论交互问题，主要提供一种构建这类系统的思路。
 
 
 
@@ -48,7 +48,7 @@ SELECT id, zoneName AS zone FROM users WHERE id > 10
 
 #### A Visualization Grammar
 
-数据可视化本质上是数据到图形属性的映射。*The Grammar of Graphics* 提供了刚刚好的抽象。
+数据可视化本质上是数据到图形属性的映射。*The Grammar of Graphics* 提供了刚刚好的抽象。下面是一个 [vega-lit](https://vega.github.io/vega-lite/) 的例子。
 
 ```json
 {
@@ -71,4 +71,18 @@ SELECT id, zoneName AS zone FROM users WHERE id > 10
 
 即可得到最简单的柱状图：
 
-![柱状图](https://wx1.sinaimg.cn/mw690/006Ve2YMly1g3hhy7pnh9j30ec0eqwey.jpg)
+![柱状图](../assets/Screen Shot 2019-05-29 at 00.26.05.png)
+
+为什么需要这样一种 DSL ?
+
+做这样的系统时，很自然的想法是使用一些自定义的配置字段，然后再写代码去渲染图表。在早期，这样做起来也不麻烦，但是当你要支持越来越多的图形种类和配置时，本质上，你在实现一个自己的 DSL, 但是比起基于 *The Grammar of Graphics*  的 DSL, 抽象更混乱，配置更繁琐，扩展性更差，感觉需求无穷无尽。想象一下，你要实现 [Vega-Lite Example](https://vega.github.io/vega-lite/examples/) 里所有的图表，需要自己"精心设计"多么复杂的配置，而这只是冰山一角。
+
+
+
+但是即使如 Metabase 这样比较流行的系统，支持的图表类型也非常有限。我觉得它最大的缺点是：很多图画不出来。而 Tableau 的强大之处在于，它可以画出很多其它系统都画不出的图表，而这强大的根源就是基于 *The Grammar of Graphics* （这本书的作者以前是 Tableau 的 VP），我标注了一张 Tableau 和 G2 概念的对比图:
+
+![tableau](../assets/tableau.png)
+
+
+
+结合G2 的 [图形属性](https://www.yuque.com/antv/g2-docs/tutorial-attr#zvovgz) 这篇文档，可以非常清晰的看出数据到图形属性的映射。使用类似于 Vega/Vega-Lite 等基于 *The Grammar of Graphics* 的图表，理论上可以获得和 Tableau/G2 同样强大的作图能力。
