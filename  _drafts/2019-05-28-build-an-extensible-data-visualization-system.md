@@ -85,4 +85,8 @@ SELECT id, zoneName AS zone FROM users WHERE id > 10
 
 
 
-结合G2 的 [图形属性](https://www.yuque.com/antv/g2-docs/tutorial-attr#zvovgz) 这篇文档，可以非常清晰的看出数据到图形属性的映射。使用类似于 Vega/Vega-Lite 等基于 *The Grammar of Graphics* 的图表，理论上可以获得和 Tableau/G2 同样强大的作图能力。
+结合G2 的 [图形属性](https://www.yuque.com/antv/g2-docs/tutorial-attr#zvovgz) 这篇文档，可以非常清晰的看出数据到图形属性的映射。使用类似于 Vega/Vega-Lite 等基于 *The Grammar of Graphics* 的 DSL，理论上可以获得和 Tableau/G2 同样强大的作图能力。
+
+
+
+但是文章开头我就说了要在易用性和功能上维持一种微妙的平衡，Tableau 功能虽然强大，但是学习成本也较高，甚至[有个资格证可以考](https://www.zhihu.com/question/56816019), 也有些大学课程和专门的培训班。Metabase 用起来就比较简单。
