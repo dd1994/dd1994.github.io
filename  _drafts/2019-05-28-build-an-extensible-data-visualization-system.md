@@ -12,7 +12,7 @@ title:  "构建可扩展的数据可视化系统的一种思路"
 1. 用户交互生成 sql dsl 和 图表 ui dsl
 2. sql dsl 生成 sql
 3. 执行 sql 得到 查询结果, 合并到 ui dsl 中
-4. 渲染 ui dsl 得到
+4. 渲染 ui dsl 得到图表
 
 
 
@@ -79,13 +79,13 @@ SELECT id, zoneName AS zone FROM users WHERE id > 10
 
 
 
-但是即使如 Metabase 这样比较流行的系统，支持的图表类型也非常有限。我觉得它最大的缺点是：很多图画不出来。而 Tableau 的强大之处在于，它可以画出很多其它系统都画不出的图表，而这强大的根源就是基于 *The Grammar of Graphics* （这本书的作者以前是 Tableau 的 VP），我标注了一张 Tableau 和 G2 概念的对比图:
+即使如 Metabase 这样比较流行的系统，支持的图表类型也非常有限。我觉得它最大的缺点是：很多图画不出来。而 Tableau 的强大之处在于，它可以画出很多其它系统都画不出的图表，而这强大的根源就是基于 *The Grammar of Graphics* （这本书的作者以前是 Tableau 的 VP），我标注了一张 Tableau 和 G2 概念的对比图:
 
 ![tableau](../assets/tableau.png)
 
 
 
-结合G2 的 [图形属性](https://www.yuque.com/antv/g2-docs/tutorial-attr#zvovgz) 这篇文档，可以非常清晰的看出数据到图形属性的映射。使用类似于 Vega/Vega-Lite 等基于 *The Grammar of Graphics* 的 DSL，理论上可以获得和 Tableau/G2 同样强大的作图能力。
+结合G2 的 [图形属性](https://www.yuque.com/antv/g2-docs/tutorial-attr#zvovgz) 这篇文档，可以非常清晰的看出数据到图形属性的映射。使用类似于 Vega/Vega-Lite 基于 *The Grammar of Graphics* 的 DSL，理论上可以获得和 Tableau/G2 同样强大的作图能力。
 
 
 
